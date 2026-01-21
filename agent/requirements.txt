@@ -1,0 +1,5 @@
+google-adk>=0.0.1
+ag-ui-adk>=0.0.1
+fastapi
+uvicorn
+python-dotenv

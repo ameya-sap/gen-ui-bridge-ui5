@@ -1,0 +1,49 @@
+{
+  "Products": [
+    {
+      "ProductID": "HT-1000",
+      "ProductName": "Notebook Basic 15",
+      "Category": "Laptops",
+      "Quantity": 10,
+      "Price": 956.00,
+      "CurrencyCode": "EUR",
+      "State": "Success"
+    },
+    {
+      "ProductID": "HT-1001",
+      "ProductName": "Notebook Basic 17",
+      "Category": "Laptops",
+      "Quantity": 2,
+      "Price": 1249.00,
+      "CurrencyCode": "EUR",
+      "State": "Warning"
+    },
+    {
+      "ProductID": "HT-1002",
+      "ProductName": "Notebook Basic 18",
+      "Category": "Laptops",
+      "Quantity": 0,
+      "Price": 1570.00,
+      "CurrencyCode": "EUR",
+      "State": "Error"
+    },
+    {
+      "ProductID": "HT-1003",
+      "ProductName": "Notebook Basic 19",
+      "Category": "Laptops",
+      "Quantity": 15,
+      "Price": 1650.00,
+      "CurrencyCode": "EUR",
+      "State": "Success"
+    },
+    {
+      "ProductID": "HT-1007",
+      "ProductName": "ITelo Vault",
+      "Category": "Accessories",
+      "Quantity": 20,
+      "Price": 299.00,
+      "CurrencyCode": "EUR",
+      "State": "Success"
+    }
+  ]
+}

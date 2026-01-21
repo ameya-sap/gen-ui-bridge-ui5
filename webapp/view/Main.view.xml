@@ -1,0 +1,101 @@
+<mvc:View
+    controllerName="sap.ui.demo.stocktrack.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Shell>
+        <App>
+            <Page title="Inventory Manager">
+                <content>
+                    <!-- 
+                        Data Binding Explanation:
+                        items="{/Products}" : Absolute binding to the 'Products' array in the default model.
+                        The '/' indicates the root of the model data.
+                    -->
+                    <Table
+                        id="productsTable"
+                        items="{/Products}"
+                        class="sapUiResponsiveMargin"
+                        width="auto">
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="Products" level="H2"/>
+                                <ToolbarSpacer/>
+                                <!-- search handler mapped to controller method .onSearch -->
+                                <SearchField
+                                    width="50%"
+                                    search=".onSearch"
+                                    placeholder="Filter by product name..."/>
+                            </Toolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <Text text="Product"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="Category"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+                                <Text text="Price"/>
+                            </Column>
+                            <Column hAlign="End">
+                                <Text text="Stock Level"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <!-- Property Binding: Simple relative binding to 'ProductName' and 'ProductID' fields of the current row context -->
+                                    <ObjectIdentifier
+                                        title="{ProductName}"
+                                        text="{ProductID}"/>
+                                    <Text text="{Category}"/>
+                                    
+                                    <!-- 
+                                        Complex Binding / Expression Binding:
+                                        Uses 'parts' to bind multiple properties (Price, CurrencyCode)
+                                        and a type 'sap.ui.model.type.Currency' to format the output correctly.
+                                    -->
+                                    <ObjectNumber
+                                        number="{
+                                            parts: [
+                                                {path: 'Price'},
+                                                {path: 'CurrencyCode'}
+                                            ],
+                                            type: 'sap.ui.model.type.Currency',
+                                            formatOptions: {
+                                                showMeasure: false
+                                            }
+                                        }"
+                                        unit="{CurrencyCode}"
+                                        state="None"/>
+                                    
+                                    <!-- 
+                                        Formatter:
+                                        Uses a custom formatter function '.formatStockValue' defined in the controller.
+                                        Maps 'State' property directly to the 'state' property of ObjectStatus for color coding.
+                                    -->
+                                    <ObjectStatus
+                                        text="{
+                                            parts: [
+                                                {path: 'Quantity'}
+                                            ],
+                                            formatter: '.formatStockValue'
+                                        }"
+                                        state="{State}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+                <footer>
+                    <Toolbar>
+                        <content>
+                            <Input id="chatInput" placeholder="Ask about products (e.g. 'Status of Notebook Basic 15')..." width="80%"/>
+                            <Button text="Ask AI" press=".onAskAI" type="Emphasized"/>
+                        </content>
+                    </Toolbar>
+                </footer>
+            </Page>
+        </App>
+    </Shell>
+</mvc:View>
