@@ -36,7 +36,6 @@ env/
 
 # Environment Variables
 .env
-.env.*
 
 # Node / NPM
 node_modules/
